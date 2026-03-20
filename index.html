@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Agape by Nat — Blog de maquillaje y belleza auténtica. Descubre tutoriales, tendencias, infografías y podcasts sobre automaquillaje y estilo propio."
+    />
+    <meta name="author" content="Natalia" />
+    <meta property="og:title" content="Agape by Nat — Belleza Auténtica, Estilo Propio" />
+    <meta
+      property="og:description"
+      content="Blog de maquillaje y belleza auténtica. Tutoriales, tendencias, infografías y podcasts."
+    />
+    <meta property="og:type" content="website" />
+    <title>Agape by Nat — Belleza Auténtica, Estilo Propio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231c1c1c'/><text x='50' y='62' font-family='Georgia,serif' font-size='38' font-weight='bold' fill='white' text-anchor='middle'>AN</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         SITE HEADER
+    ============================================================ -->
+    <header class="site-header" role="banner">
+      <nav class="nav" aria-label="Navegación principal">
+
+        <!-- Left nav links -->
+        <ul class="nav-links nav-links--left" role="list">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="#blog">BLOG</a></li>
+        </ul>
+
+        <!-- Center brand -->
+        <a href="index.html" class="brand" aria-label="Agape by Nat — Inicio">
+          AGAPE BY NAT
+        </a>
+
+        <!-- Right nav links -->
+        <ul class="nav-links nav-links--right" role="list">
+          <li><a href="#about">SOBRE MÍ</a></li>
+          <li><a href="#contact">CONTACTO</a></li>
+        </ul>
+
+        <!-- Hamburger button (mobile only) -->
+        <button
+          class="hamburger"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+
+      </nav>
+    </header>
+
+    <!-- Mobile nav overlay -->
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menú de navegación móvil"
+      hidden
+    >
+      <button
+        class="mobile-nav-close"
+        aria-label="Cerrar menú de navegación"
+      >
+        &#215;
+      </button>
+      <ul role="list">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#blog">BLOG</a></li>
+        <li><a href="#about">SOBRE MÍ</a></li>
+        <li><a href="#contact">CONTACTO</a></li>
+      </ul>
+    </div>
+
+    <main id="main-content">
+
+      <!-- ============================================================
+           HERO SECTION
+      ============================================================ -->
+      <section class="hero" aria-label="Sección principal">
+        <img
+          class="hero__bg"
+          src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1920&h=900&fit=crop"
+          alt=""
+          role="presentation"
+          fetchpriority="high"
+        />
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+          <p class="hero__subtitle">NUEVO &amp; EXCLUSIVO EN LÍNEA</p>
+          <h1 class="hero__title">BELLEZA AUTÉNTICA,<br />ESTILO PROPIO</h1>
+          <a href="#blog" class="btn btn--primary">EXPLORAR BLOG</a>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           MARQUEE #1
+      ============================================================ -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__inner">
+          <span class="marquee__text">
+            MAQUILLAJE &nbsp;·&nbsp; BELLEZA &nbsp;·&nbsp; ESTILO &nbsp;·&nbsp; TENDENCIAS &nbsp;·&nbsp; AGAPE BY NAT &nbsp;·&nbsp;
+            MAQUILLAJE &nbsp;·&nbsp; BELLEZA &nbsp;·&nbsp; ESTILO &nbsp;·&nbsp; TENDENCIAS &nbsp;·&nbsp; AGAPE BY NAT &nbsp;·&nbsp;
+          </span>
+          <span class="marquee__text" aria-hidden="true">
+            MAQUILLAJE &nbsp;·&nbsp; BELLEZA &nbsp;·&nbsp; ESTILO &nbsp;·&nbsp; TENDENCIAS &nbsp;·&nbsp; AGAPE BY NAT &nbsp;·&nbsp;
+            MAQUILLAJE &nbsp;·&nbsp; BELLEZA &nbsp;·&nbsp; ESTILO &nbsp;·&nbsp; TENDENCIAS &nbsp;·&nbsp; AGAPE BY NAT &nbsp;·&nbsp;
+          </span>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           BLOG SECTION
+      ============================================================ -->
+      <section class="section" id="blog" aria-labelledby="blog-heading">
+        <h2 class="section__title" id="blog-heading">ÚLTIMAS PUBLICACIONES</h2>
+
+        <div class="cards-grid">
+
+          <!-- Card 1 — Video -->
+          <article class="card" aria-labelledby="card1-title">
+            <a href="post1.html" class="card__image-link" tabindex="-1" aria-hidden="true">
+              <div class="card__image">
+                <img
+                  src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=600&fit=crop"
+                  alt="Storytime mientras me maquillo con mis productos favoritos"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                />
+              </div>
+            </a>
+            <div class="card__body">
+              <span class="card__tag">VIDEO</span>
+              <h3 class="card__title" id="card1-title">
+                STORYTIME... MIENTRAS ME MAQUILLO CON MIS PRODUCTOS FAVORITOS
+              </h3>
+              <p class="card__excerpt">
+                Siéntate conmigo mientras te cuento historias divertidas e íntimas,
+                todo mientras aplico mis productos de maquillaje favoritos del momento.
+                Glam + conversación, la combinación perfecta.
+              </p>
+              <a href="post1.html" class="card__link" aria-label="Leer más sobre Storytime mientras me maquillo">
+                LEER MÁS
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 — Infografía -->
+          <article class="card" aria-labelledby="card2-title">
+            <a href="post2.html" class="card__image-link" tabindex="-1" aria-hidden="true">
+              <div class="card__image">
+                <img
+                  src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&h=600&fit=crop"
+                  alt="Los 5 errores más comunes en el maquillaje diario"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                />
+              </div>
+            </a>
+            <div class="card__body">
+              <span class="card__tag">INFOGRAFÍA</span>
+              <h3 class="card__title" id="card2-title">
+                LOS 5 ERRORES MÁS COMUNES EN EL MAQUILLAJE DIARIO
+              </h3>
+              <p class="card__excerpt">
+                ¿Tu maquillaje no dura todo el día o no luce como esperabas?
+                Descubre los errores más frecuentes que cometemos sin darnos cuenta
+                y aprende cómo corregirlos con trucos sencillos.
+              </p>
+              <a href="post2.html" class="card__link" aria-label="Leer más sobre los 5 errores más comunes en el maquillaje diario">
+                LEER MÁS
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 — Podcast -->
+          <article class="card" aria-labelledby="card3-title">
+            <a href="post3.html" class="card__image-link" tabindex="-1" aria-hidden="true">
+              <div class="card__image">
+                <img
+                  src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&h=600&fit=crop"
+                  alt="Las 5 razones para no perderte la experiencia de automaquillaje"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                />
+              </div>
+            </a>
+            <div class="card__body">
+              <span class="card__tag">PODCAST</span>
+              <h3 class="card__title" id="card3-title">
+                LAS 5 RAZONES PARA NO PERDERTE LA EXPERIENCIA DE AUTOMAQUILLAJE
+              </h3>
+              <p class="card__excerpt">
+                En este episodio del podcast hablo sobre por qué maquillarte
+                sola puede ser un acto de amor propio, empoderamiento y creatividad.
+                Cinco razones que te van a inspirar a agarrar tus pinceles hoy.
+              </p>
+              <a href="post3.html" class="card__link" aria-label="Leer más sobre las 5 razones para no perderte la experiencia de automaquillaje">
+                LEER MÁS
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============================================================
+           QUOTE SECTION
+      ============================================================ -->
+      <section class="quote-section" aria-label="Cita inspiracional">
+        <blockquote>
+          <p>
+            "LA BELLEZA QUE TE SACA ES TAN IMPORTANTE PARA MÍ, PORQUE LA BELLEZA
+            ME HA PERMITIDO SER YO MISMA, ENCONTRAR MI VOZ Y SER VISTA"
+          </p>
+        </blockquote>
+      </section>
+
+      <!-- ============================================================
+           ABOUT SECTION
+      ============================================================ -->
+      <section class="about-section" id="about" aria-labelledby="about-heading">
+
+        <div class="about-section__image">
+          <img
+            src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&h=800&fit=crop"
+            alt="Natalia, fundadora de Agape by Nat"
+            loading="lazy"
+            width="600"
+            height="800"
+          />
+        </div>
+
+        <div class="about-section__text">
+          <h2 id="about-heading">SOBRE NATALIA</h2>
+          <p>
+            Hola, soy Nat — entusiasta del maquillaje, amante de la belleza
+            y firme creyente de que el glam es para todas. Llevo años explorando
+            el mundo del maquillaje no como una máscara, sino como un lenguaje
+            propio: una forma de expresarme, de sentirme poderosa y de conectar
+            conmigo misma.
+          </p>
+          <p>
+            Agape by Nat nació de esa convicción. Aquí no encontrarás estándares
+            inalcanzables ni tendencias vacías — encontrarás honestidad, técnica
+            real y una comunidad que se apoya mutuamente en su camino hacia
+            una belleza auténtica.
+          </p>
+          <p>
+            Mi misión es ayudarte a encontrar tu voz a través del maquillaje,
+            ya sea con un tutorial paso a paso, una infografía práctica o una
+            conversación sincera en el podcast. La belleza que te saca siempre
+            será mi norte.
+          </p>
+          <p class="about-section__sign">XO, Nat</p>
+        </div>
+
+      </section>
+
+      <!-- ============================================================
+           MARQUEE #2
+      ============================================================ -->
+      <div class="marquee marquee--light" aria-hidden="true">
+        <div class="marquee__inner">
+          <span class="marquee__text">
+            BEAUTY THAT BRINGS YOU OUT &nbsp;·&nbsp; BELLEZA QUE TE SACA &nbsp;·&nbsp;
+            BEAUTY THAT BRINGS YOU OUT &nbsp;·&nbsp; BELLEZA QUE TE SACA &nbsp;·&nbsp;
+          </span>
+          <span class="marquee__text" aria-hidden="true">
+            BEAUTY THAT BRINGS YOU OUT &nbsp;·&nbsp; BELLEZA QUE TE SACA &nbsp;·&nbsp;
+            BEAUTY THAT BRINGS YOU OUT &nbsp;·&nbsp; BELLEZA QUE TE SACA &nbsp;·&nbsp;
+          </span>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TRENDING ON TIKTOK
+      ============================================================ -->
+      <section class="tiktok-section">
+        <h2 class="tiktok-section__title">TRENDING ON TIKTOK</h2>
+
+        <div class="tiktok-carousel__wrapper">
+          <div class="tiktok-carousel" id="tiktok-carousel">
+
+            <!-- Card 1 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=710&fit=crop" alt="Tutorial de maquillaje" loading="lazy" />
+                <span class="tiktok-card__overlay">mi rutina de todos los días...</span>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=80&h=80&fit=crop" alt="Base Luminosa" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Base Luminosa Hidratante SPF 30</p>
+                  <p class="tiktok-card__product-price">$165.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=710&fit=crop" alt="Look natural" loading="lazy" />
+                <span class="tiktok-card__overlay">este look es todo lo que necesitas</span>
+                <div class="tiktok-card__tiktok-badge"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg></div>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1583241800698-e8ab01830e07?w=80&h=80&fit=crop" alt="Corrector" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Corrector Soft Blur Brightening</p>
+                  <p class="tiktok-card__product-price">$128.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=400&h=710&fit=crop" alt="Aplicando sombras" loading="lazy" />
+                <span class="tiktok-card__overlay">probando la paleta nueva y no puedo...</span>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=80&h=80&fit=crop" alt="Paleta Sombras" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Paleta Dimension Essential Artistry Edit Eyeshadow...</p>
+                  <p class="tiktok-card__product-price">$165.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=710&fit=crop" alt="Maquillaje glam" loading="lazy" />
+                <span class="tiktok-card__overlay">GRWM para una cita especial</span>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=80&h=80&fit=crop" alt="Bálsamo Labial" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Bálsamo Hidratante Smoothing Lip Balm</p>
+                  <p class="tiktok-card__product-price">$94.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=710&fit=crop" alt="Skincare routine" loading="lazy" />
+                <div class="tiktok-card__tiktok-badge"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg></div>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=80&h=80&fit=crop" alt="Crema Hidratante" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Crema Hidratante Prep & Glow</p>
+                  <p class="tiktok-card__product-price">$112.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=710&fit=crop" alt="Makeup closeup" loading="lazy" />
+                <span class="tiktok-card__overlay">la técnica que cambió mi rutina</span>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=80&h=80&fit=crop" alt="Foundation" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Major Skin Soft Blur Brightening Concealer</p>
+                  <p class="tiktok-card__product-price">$128.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="tiktok-card">
+              <div class="tiktok-card__video">
+                <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=710&fit=crop" alt="Beauty portrait" loading="lazy" />
+                <span class="tiktok-card__overlay">productos que uso todos los días</span>
+                <div class="tiktok-card__tiktok-badge"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg></div>
+                <button class="tiktok-card__mute" aria-label="Silenciar">
+                  <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+              </div>
+              <div class="tiktok-card__product">
+                <img class="tiktok-card__product-img" src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=80&h=80&fit=crop" alt="Lip Color" />
+                <div class="tiktok-card__product-info">
+                  <p class="tiktok-card__product-name">Dual-Ended Concealer Brush</p>
+                  <p class="tiktok-card__product-price">$113.000</p>
+                </div>
+                <button class="tiktok-card__add" aria-label="Agregar"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Navigation arrows -->
+        <div class="tiktok-nav">
+          <button class="tiktok-nav__btn" id="tiktok-prev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="tiktok-nav__btn" id="tiktok-next" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer" id="contact" role="contentinfo">
+      <div class="footer__inner">
+
+        <!-- Column 1 — Brand -->
+        <div class="footer__brand">
+          <a href="index.html" aria-label="Agape by Nat — Inicio">AGAPE BY NAT</a>
+          <p class="footer__text">
+            Blog de maquillaje y belleza auténtica. Tutoriales, infografías,
+            podcasts y todo lo que necesitas para encontrar tu propio estilo.
+          </p>
+        </div>
+
+        <!-- Column 2 — Navigation -->
+        <nav class="footer__nav" aria-label="Navegación del pie de página">
+          <p class="footer__title">NAVEGACIÓN</p>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#about">Sobre mí</a></li>
+            <li><a href="#contact">Contacto</a></li>
+            <li><a href="post1.html">Videos</a></li>
+            <li><a href="post2.html">Infografías</a></li>
+            <li><a href="post3.html">Podcast</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3 — Social -->
+        <div class="footer__social-col">
+          <p class="footer__title">SÍGUEME</p>
+          <ul class="footer__social" role="list">
+
+            <!-- Instagram -->
+            <li>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram de Agape by Nat (abre en nueva pestaña)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+                <span>Instagram</span>
+              </a>
+            </li>
+
+            <!-- TikTok -->
+            <li>
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok de Agape by Nat (abre en nueva pestaña)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
+                </svg>
+                <span>TikTok</span>
+              </a>
+            </li>
+
+            <!-- YouTube -->
+            <li>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube de Agape by Nat (abre en nueva pestaña)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.25 3.5-6.25 3.5z" />
+                </svg>
+                <span>YouTube</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom bar -->
+      <div class="footer__bottom">
+        <p>&copy; 2026 Agape by Nat. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- ============================================================
+         STICKY BADGE
+    ============================================================ -->
+    <a href="#blog" class="sticky-badge" aria-label="Nueva entrada — ir al blog">
+      <span>NUEVA ENTRADA</span>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
