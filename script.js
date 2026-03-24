@@ -91,6 +91,38 @@ if (tiktokCarousel && tiktokPrev && tiktokNext) {
   });
 }
 
+// ===== HERO PARALLAX + FADE =====
+const heroSection = document.querySelector('.hero');
+const heroBg = document.querySelector('.hero__bg');
+const heroContent = document.querySelector('.hero__content');
+
+if (heroSection && heroBg && heroContent) {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth < 768;
+
+  if (!prefersReducedMotion && !isMobile) {
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const heroHeight = heroSection.offsetHeight;
+
+          if (scrollY <= heroHeight) {
+            heroBg.style.transform = 'translateY(' + (scrollY * 0.35) + 'px)';
+            heroContent.style.opacity = 1 - (scrollY / (heroHeight * 0.7));
+            heroContent.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+}
+
 // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {

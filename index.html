@@ -100,9 +100,17 @@
         />
         <div class="hero__overlay" aria-hidden="true"></div>
         <div class="hero__content">
-          <p class="hero__subtitle">NUEVO &amp; EXCLUSIVO EN LÍNEA</p>
-          <h1 class="hero__title">CADA EXPERIENCIA<br />ES UN ACTO DE AMOR</h1>
-          <a href="#blog" class="btn btn--primary">EXPLORAR BLOG</a>
+          <p class="hero__subtitle hero__animate" style="--delay: 0s">NUEVO &amp; EXCLUSIVO EN LÍNEA</p>
+          <h1 class="hero__title">
+            <span class="hero__word" style="--delay: 0.3s">CADA</span>
+            <span class="hero__word" style="--delay: 0.4s">EXPERIENCIA</span><br />
+            <span class="hero__word" style="--delay: 0.55s">ES</span>
+            <span class="hero__word" style="--delay: 0.65s">UN</span>
+            <span class="hero__word" style="--delay: 0.75s">ACTO</span>
+            <span class="hero__word" style="--delay: 0.85s">DE</span>
+            <span class="hero__word" style="--delay: 0.95s">AMOR</span>
+          </h1>
+          <a href="#blog" class="btn btn--primary hero__animate" style="--delay: 1.2s">EXPLORAR BLOG</a>
         </div>
       </section>
 
@@ -131,7 +139,7 @@
         <div class="cards-grid">
 
           <!-- Card 1 — Video -->
-          <article class="card" aria-labelledby="card1-title">
+          <article class="card reveal reveal--d1" aria-labelledby="card1-title">
             <a href="post1.html" class="card__image-link" tabindex="-1" aria-hidden="true">
               <div class="card__image">
                 <img
@@ -159,8 +167,8 @@
             </div>
           </article>
 
-          <!-- Card 2 — Infografía -->
-          <article class="card" aria-labelledby="card2-title">
+          <!-- Card 2 — Quiz Interactivo -->
+          <article class="card reveal reveal--d2" aria-labelledby="card2-title">
             <a href="post2.html" class="card__image-link" tabindex="-1" aria-hidden="true">
               <div class="card__image">
                 <img
@@ -189,7 +197,7 @@
           </article>
 
           <!-- Card 3 — Podcast -->
-          <article class="card" aria-labelledby="card3-title">
+          <article class="card reveal reveal--d3" aria-labelledby="card3-title">
             <a href="post3.html" class="card__image-link" tabindex="-1" aria-hidden="true">
               <div class="card__image">
                 <img
@@ -223,7 +231,7 @@
       <!-- ============================================================
            QUOTE SECTION
       ============================================================ -->
-      <section class="quote-section" aria-label="Cita inspiracional">
+      <section class="quote-section reveal" aria-label="Cita inspiracional">
         <blockquote>
           <p>
             "LA BELLEZA QUE TE SACA ES TAN IMPORTANTE PARA MÍ, PORQUE LA BELLEZA
@@ -237,7 +245,7 @@
       ============================================================ -->
       <section class="about-section" id="about" aria-labelledby="about-heading">
 
-        <div class="about-section__image">
+        <div class="about-section__image reveal reveal--left">
           <img
             src="IMG_2554.PNG"
             alt="Natalia, fundadora de Agape by Nat"
@@ -247,7 +255,7 @@
           />
         </div>
 
-        <div class="about-section__text">
+        <div class="about-section__text reveal reveal--right">
           <h2 id="about-heading">SOBRE NATALIA</h2>
           <p>
             Hola, soy Nat — entusiasta del maquillaje, amante de la belleza
@@ -293,7 +301,7 @@
            TRENDING ON TIKTOK
       ============================================================ -->
       <section class="tiktok-section">
-        <h2 class="tiktok-section__title">TRENDING ON TIKTOK</h2>
+        <h2 class="tiktok-section__title reveal">TRENDING ON TIKTOK</h2>
 
         <div class="tiktok-carousel__wrapper">
           <div class="tiktok-carousel" id="tiktok-carousel">
