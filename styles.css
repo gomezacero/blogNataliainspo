@@ -1114,6 +1114,7 @@ h6 { font-size: var(--text-h6); }
   -webkit-overflow-scrolling: touch;
   padding-bottom: 0.5rem;
   scrollbar-width: none;
+  justify-content: center;
 }
 
 .tiktok-carousel::-webkit-scrollbar {
