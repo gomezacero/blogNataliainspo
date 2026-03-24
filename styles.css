@@ -1126,6 +1126,12 @@ h6 { font-size: var(--text-h6); }
   scroll-snap-align: start;
 }
 
+.tiktok-card__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .tiktok-card__video {
   position: relative;
   width: 100%;
