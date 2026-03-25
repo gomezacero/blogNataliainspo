@@ -133,3 +133,223 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ===== INTERACTIVE POST COMPONENTS =====
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- QUIZ INTERACTIVO ---
+  const quizzes = document.querySelectorAll('.quiz');
+  quizzes.forEach(quiz => {
+    let score = 0;
+    let answered = 0;
+    const questions = quiz.querySelectorAll('.quiz__question');
+    const total = questions.length;
+    const scoreEl = quiz.querySelector('.quiz__score');
+    const scoreNum = quiz.querySelector('.quiz__score-number');
+
+    quiz.querySelectorAll('.quiz__option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const question = this.closest('.quiz__question');
+        if (question.classList.contains('quiz--answered')) return;
+        question.classList.add('quiz--answered');
+
+        const correct = question.getAttribute('data-correct');
+        const selected = this.getAttribute('data-value');
+        const options = question.querySelectorAll('.quiz__option');
+        const feedback = question.querySelector('.quiz__feedback');
+
+        options.forEach(opt => {
+          opt.classList.add('quiz__option--answered');
+          if (opt.getAttribute('data-value') === correct) {
+            opt.classList.add('quiz__option--correct');
+          }
+        });
+
+        if (selected === correct) {
+          this.classList.add('quiz__option--correct');
+          score++;
+        } else {
+          this.classList.add('quiz__option--incorrect');
+        }
+
+        if (feedback) feedback.classList.add('quiz__feedback--visible');
+
+        answered++;
+        if (answered === total && scoreEl && scoreNum) {
+          scoreNum.textContent = `${score}/${total}`;
+          scoreEl.classList.add('quiz__score--visible');
+        }
+      });
+    });
+  });
+
+  // --- CHECKLIST INTERACTIVO ---
+  const checklists = document.querySelectorAll('.checklist');
+  checklists.forEach(checklist => {
+    const items = checklist.querySelectorAll('.checklist__item');
+    const progressFill = checklist.querySelector('.checklist__progress-fill');
+    const completeMsg = checklist.querySelector('.checklist__complete');
+
+    items.forEach(item => {
+      item.addEventListener('click', function() {
+        this.classList.toggle('checklist__item--checked');
+        const checkedCount = checklist.querySelectorAll('.checklist__item--checked').length;
+        const pct = (checkedCount / items.length) * 100;
+        
+        if (progressFill) progressFill.style.width = pct + '%';
+        if (completeMsg) {
+          if (checkedCount === items.length) {
+            completeMsg.classList.add('checklist__complete--visible');
+          } else {
+            completeMsg.classList.remove('checklist__complete--visible');
+          }
+        }
+      });
+    });
+  });
+
+  // --- TIMESTAMPS CLICK ---
+  const timestampBtns = document.querySelectorAll('.timestamps-interactive__item');
+  const videoEmbed = document.querySelector('.video-embed');
+  timestampBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      timestampBtns.forEach(b => b.classList.remove('timestamps-interactive__item--active'));
+      this.classList.add('timestamps-interactive__item--active');
+      if (videoEmbed) {
+        videoEmbed.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+
+  // --- FLIP CARDS ---
+  const flipCards = document.querySelectorAll('.flip-card');
+  flipCards.forEach(card => {
+    // Remove inline onclick if exists to avoid duplication
+    card.removeAttribute('onclick');
+    card.addEventListener('click', function() {
+      this.classList.toggle('flip-card--flipped');
+    });
+  });
+
+  // --- INFOGRAPHIC PROGRESS TRACKER ---
+  const tracker = document.getElementById('progress-tracker');
+  const steps = document.querySelectorAll('.infographic-step');
+  
+  if (tracker && steps.length && 'IntersectionObserver' in window) {
+    const dots = tracker.querySelectorAll('.progress-tracker__dot');
+    const lines = tracker.querySelectorAll('.progress-tracker__line');
+    
+    // Tracker visibility based on content area
+    const articleContent = document.querySelector('.post-content');
+    if (articleContent) {
+      const trackerVisObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tracker.classList.add('progress-tracker--visible');
+          } else {
+            tracker.classList.remove('progress-tracker--visible');
+          }
+        });
+      }, { threshold: 0.05 });
+      trackerVisObserver.observe(articleContent);
+    }
+    
+    // Step activation observer
+    const stepVisObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const stepNum = entry.target.getAttribute('data-step');
+        if (stepNum) {
+          const idx = parseInt(stepNum) - 1;
+          if (entry.isIntersecting && dots[idx]) {
+            dots[idx].classList.add('progress-tracker__dot--active');
+            if (lines[idx]) lines[idx].classList.add('progress-tracker__line--active');
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    steps.forEach(step => stepVisObserver.observe(step));
+  }
+
+  // --- COUNTDOWN TIMER ---
+  const countdownEl = document.getElementById('countdown');
+  if (countdownEl) {
+    // For demo purposes, we set an event date in the future
+    const eventDate = new Date();
+    eventDate.setDate(eventDate.getDate() + 15); // 15 days from now
+    eventDate.setHours(10, 0, 0, 0);
+    const eventTime = eventDate.getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = eventTime - now;
+
+      if (diff <= 0) {
+        const grid = countdownEl.querySelector('.countdown__grid');
+        const heading = countdownEl.querySelector('.countdown__heading');
+        if (grid) grid.innerHTML = '<p class="countdown__expired">El evento ya lleg&oacute;</p>';
+        if (heading) heading.textContent = '';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const dEl = document.getElementById('countdown-days');
+      const hEl = document.getElementById('countdown-hours');
+      const mEl = document.getElementById('countdown-mins');
+      const sEl = document.getElementById('countdown-secs');
+      
+      if (dEl) dEl.textContent = String(days).padStart(2, '0');
+      if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+      if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+      if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  // --- POLL INTERACTIVO ---
+  const pollOptions = document.querySelectorAll('.poll__option');
+  if (pollOptions.length > 0) {
+    let pollVoted = false;
+    try { pollVoted = localStorage.getItem('agape-poll-voted') === 'true'; } catch(e) {}
+
+    const updatePollUI = (selectedChoice) => {
+      pollOptions.forEach(opt => {
+        opt.classList.add('poll__option--voted');
+        const pct = opt.getAttribute('data-percent');
+        const bar = opt.querySelector('.poll__bar');
+        if (bar) {
+          // small delay for animation
+          setTimeout(() => { bar.style.width = pct + '%'; }, 50);
+        }
+        if (selectedChoice && opt.getAttribute('data-option') === selectedChoice) {
+          opt.classList.add('poll__option--selected');
+        }
+      });
+    };
+
+    if (pollVoted) {
+      let savedChoice = null;
+      try { savedChoice = localStorage.getItem('agape-poll-choice'); } catch(e) {}
+      updatePollUI(savedChoice);
+    }
+
+    pollOptions.forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (pollVoted) return;
+        pollVoted = true;
+        const choice = this.getAttribute('data-option');
+        try {
+          localStorage.setItem('agape-poll-voted', 'true');
+          localStorage.setItem('agape-poll-choice', choice);
+        } catch(e) {}
+        updatePollUI(choice);
+      });
+    });
+  }
+});
