@@ -24,15 +24,31 @@ if (hamburger && mobileNav) {
   });
 }
 
-// ===== HEADER SHADOW ON SCROLL =====
+// ===== HEADER SMART SCROLL =====
 const header = document.querySelector('.site-header');
 if (header) {
+  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Glassmorphism shadow toggle
+    if (currentScroll > 50) {
       header.classList.add('site-header--scrolled');
     } else {
       header.classList.remove('site-header--scrolled');
     }
+    
+    // Hide/Show intelligent logic (hide on scroll down, show on scroll up)
+    if (currentScroll > lastScroll && currentScroll > 150) {
+      // Scrolling down (Hide)
+      header.classList.add('site-header--hidden');
+    } else {
+      // Scrolling up (Show)
+      header.classList.remove('site-header--hidden');
+    }
+    
+    // For Mobile or negative scrolling
+    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
   });
 }
 
@@ -350,6 +366,126 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch(e) {}
         updatePollUI(choice);
       });
+    });
+  }
+});
+
+// ===================================================================
+// LUXURY UX: Custom Cursor, Magnetic Buttons, and GSAP Reveal
+// ===================================================================
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- 1. PREMIUM CUSTOM CURSOR ---
+  const cursor = document.querySelector('.custom-cursor');
+  if (cursor && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+    const speed = 0.15; // lerp speed for smooth trailing
+
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    const moveCursor = () => {
+      cursorX += (mouseX - cursorX) * speed;
+      cursorY += (mouseY - cursorY) * speed;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(moveCursor);
+    };
+    moveCursor();
+
+    // Hover states for links and buttons
+    const hoverElements = document.querySelectorAll('a, button, .quiz__option, .checklist__item, .magnetic');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // Special hover state for images or cards
+    const textHoverElements = document.querySelectorAll('.card, .product-card, .tiktok-card');
+    textHoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover-text');
+        cursor.classList.remove('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover-text');
+      });
+    });
+  }
+
+  // --- 2. MAGNETIC BUTTONS ---
+  const magneticEls = document.querySelectorAll('.magnetic');
+  // Only apply logic if GSAP is loaded
+  if (typeof gsap !== 'undefined') {
+    magneticEls.forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        // Calculate distance from center
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        gsap.to(el, {
+          x: x * 0.35, // magnetic strength x
+          y: y * 0.35, // magnetic strength y
+          duration: 0.4,
+          ease: "power3.out"
+        });
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        // Snap back to original position
+        gsap.to(el, {
+          x: 0,
+          y: 0,
+          duration: 0.7,
+          ease: "elastic.out(1, 0.3)"
+        });
+      });
+    });
+  }
+
+  // --- 3. GSAP SCROLL REVEAL (Editorial Look) ---
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade up the Hero text (replacement for the old CSS --delay method)
+    // First, clear old animations if we apply GSAP
+    const heroElements = document.querySelectorAll(".hero__word, .hero__animate");
+    if (heroElements.length) {
+      gsap.fromTo(heroElements, 
+        { y: 50, opacity: 0 }, 
+        {
+          y: 0, 
+          opacity: 1, 
+          duration: 1.2, 
+          stagger: 0.1, 
+          ease: "power4.out", 
+          delay: 0.2
+        }
+      );
+    }
+
+    // Scroll reveal for main titles and sections
+    const sections = gsap.utils.toArray('.section__title, .about-section, .quote-section blockquote, .cards-grid');
+    sections.forEach(section => {
+      gsap.fromTo(section, 
+        { y: 60, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%", // when the top of the section hits 85% of the viewport
+            toggleActions: "play none none reverse"
+          },
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out"
+        }
+      );
     });
   }
 });

@@ -154,17 +154,28 @@ h6 { font-size: var(--text-h6); }
 
 /* ===== SITE HEADER ===== */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
-  background: rgb(var(--header-background));
-  border-bottom: 1px solid rgb(var(--header-border-color));
+  background: rgba(255, 255, 255, 0.85); /* Glass base */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Softer edge */
   height: var(--header-height);
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.3s ease, 
+              background 0.3s ease;
+}
+
+.site-header--hidden {
+  transform: translateY(-100%);
 }
 
 .site-header--scrolled {
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .nav {
@@ -183,27 +194,50 @@ h6 { font-size: var(--text-h6); }
   font-weight: 700;
   letter-spacing: var(--heading-letter-spacing);
   text-transform: var(--heading-text-transform);
-  color: rgb(var(--header-text));
+  color: var(--current-header-text);
   text-align: center;
   flex-shrink: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.brand:hover {
+  transform: scale(1.02);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem; /* a bit more air */
 }
 
 .nav-links a {
+  position: relative;
   font-size: var(--text-xs);
   text-transform: var(--heading-text-transform);
   letter-spacing: var(--heading-letter-spacing);
-  font-weight: var(--text-font-weight);
-  color: rgb(var(--header-text));
-  transition: opacity 0.3s;
+  font-weight: 600;
+  color: var(--current-header-text);
+  transition: color 0.3s ease, opacity 0.3s ease;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--current-header-text);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-50%);
 }
 
 .nav-links a:hover {
-  opacity: 0.5;
+  opacity: 0.7;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* Hamburger */
@@ -221,7 +255,7 @@ h6 { font-size: var(--text-h6); }
   display: block;
   width: 22px;
   height: 1px;
-  background: rgb(var(--header-text));
+  background: var(--current-header-text);
   transition: all 0.3s;
 }
 
@@ -233,12 +267,14 @@ h6 { font-size: var(--text-h6); }
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(var(--background-secondary));
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   z-index: 2000;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .mobile-nav.active {
@@ -247,9 +283,16 @@ h6 { font-size: var(--text-h6); }
 
 .mobile-nav a {
   font-family: var(--heading-font-family);
-  font-size: var(--text-lg);
+  font-size: 2.5rem; /* Huge luxury font */
   text-transform: var(--heading-text-transform);
-  letter-spacing: var(--heading-letter-spacing);
+  letter-spacing: 0.1em;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobile-nav a:hover {
+  color: rgb(var(--accent));
 }
 
 .mobile-nav-close {
@@ -258,9 +301,14 @@ h6 { font-size: var(--text-h6); }
   right: 1.5rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
-  color: rgb(var(--text-primary));
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+  transform: rotate(90deg);
 }
 
 /* ===== HERO ===== */
@@ -2549,18 +2597,6 @@ h6 { font-size: var(--text-h6); }
   font-style: italic;
   line-height: 1.5;
   color: rgb(var(--text-primary) / 0.8);
-}
-
-/* ===================================================================
-   RESPONSIVE — new components
-   =================================================================== */
-@media screen and (max-width: 699px) {
-  .platform-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .countdown__grid {
-    gap: 1rem;
   }
 
   .countdown__number {
@@ -2617,5 +2653,78 @@ h6 { font-size: var(--text-h6); }
 
   .flip-card__inner {
     transition: none;
+  }
+}
+
+/* ===================================================================
+   LUXURY UX: Custom Cursor & Film Grain
+   =================================================================== */
+
+/* Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Cursor (hidden by default on mobile, active on desktop) */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, .custom-cursor-hover {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(var(--accent));
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Optional mix-blend-mode for editorial look */
+    /* mix-blend-mode: difference; */
+  }
+
+  .custom-cursor__text {
+    color: white;
+    font-family: var(--heading-font-family);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Hover state */
+  .custom-cursor.hover {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(var(--accent) / 0.9);
+  }
+
+  .custom-cursor.hover-text {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(var(--accent) / 0.95);
+  }
+
+  .custom-cursor.hover-text .custom-cursor__text {
+    opacity: 1;
   }
 }
