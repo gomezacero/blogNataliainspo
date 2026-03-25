@@ -18,7 +18,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231c1c1c'/><text x='50' y='62' font-family='Georgia,serif' font-size='38' font-weight='bold' fill='white' text-anchor='middle'>AN</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Alex+Brush&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -90,27 +90,25 @@
       <!-- ============================================================
            HERO SECTION
       ============================================================ -->
-      <section class="hero" aria-label="Sección principal">
-        <img
-          class="hero__bg"
-          src="IMG_2548.PNG"
-          alt=""
-          role="presentation"
-          fetchpriority="high"
-        />
-        <div class="hero__overlay" aria-hidden="true"></div>
-        <div class="hero__content">
-          <p class="hero__subtitle hero__animate" style="--delay: 0s">NUEVO &amp; EXCLUSIVO EN LÍNEA</p>
-          <h1 class="hero__title">
-            <span class="hero__word" style="--delay: 0.3s">CADA</span>
-            <span class="hero__word" style="--delay: 0.4s">EXPERIENCIA</span><br />
-            <span class="hero__word" style="--delay: 0.55s">ES</span>
-            <span class="hero__word" style="--delay: 0.65s">UN</span>
-            <span class="hero__word" style="--delay: 0.75s">ACTO</span>
-            <span class="hero__word" style="--delay: 0.85s">DE</span>
-            <span class="hero__word" style="--delay: 0.95s">AMOR</span>
+      <section class="hero hero--split" aria-label="Sección principal">
+        <div class="hero__text-column">
+          <p class="hero__subtitle hero__animate" style="--delay: 0s">BLOG DE BELLEZA & LIFESTYLE</p>
+          <h1 class="hero__title hero__title--script hero__animate" style="--delay: 0.3s">
+            La belleza eres tu
           </h1>
-          <a href="#blog" class="btn btn--primary hero__animate" style="--delay: 1.2s">EXPLORAR BLOG</a>
+          <p class="hero__description hero__animate" style="--delay: 0.6s">
+            Descubre tutoriales de automaquillaje, tendencias, reseñas de productos y una visión auténtica de la belleza. Experiencias únicas para tu rutina diaria.
+          </p>
+          <a href="#blog" class="btn btn--primary hero__animate" style="--delay: 0.9s">VER COLECCIONES</a>
+        </div>
+        <div class="hero__image-column hero__animate" style="--delay: 0.5s">
+          <img
+            class="hero__model"
+            src="natalia-hero.png"
+            alt="Natalia - Maquillaje y Belleza"
+            role="presentation"
+            fetchpriority="high"
+          />
         </div>
       </section>
 
