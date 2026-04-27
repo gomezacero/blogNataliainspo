@@ -38,14 +38,7 @@ if (header) {
       header.classList.remove('site-header--scrolled');
     }
     
-    // Hide/Show intelligent logic (hide on scroll down, show on scroll up)
-    if (currentScroll > lastScroll && currentScroll > 150) {
-      // Scrolling down (Hide)
-      header.classList.add('site-header--hidden');
-    } else {
-      // Scrolling up (Show)
-      header.classList.remove('site-header--hidden');
-    }
+    header.classList.remove('site-header--hidden');
     
     // For Mobile or negative scrolling
     lastScroll = currentScroll <= 0 ? 0 : currentScroll;
